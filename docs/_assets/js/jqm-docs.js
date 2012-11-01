@@ -86,7 +86,7 @@ $.fn.viewSourceCode = function(){
 				.replace( /"/gmi, '&quot;' )
 				.replace( />/gmi, '&gt;' )
 				.replace( /</gmi, '&lt;' );
-			collapsibleHTML = $( "<div data-role='collapsible' data-inset='false' data-collapsed='false' data-theme='b' data-iconpos='right' data-content-theme='a'>" +
+			collapsibleHTML = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='b' data-iconpos='right' data-content-theme='a'>" +
 					"<h1>HTML</h1>" +
 					"<pre><code class='language-html'></code></pre>" +
 				"</div>" );
@@ -120,6 +120,7 @@ $.fn.viewSourceCode = function(){
 			collapsibleCSS.appendTo( collapsibleSet );
 		}
 
+		collapsibleSet.find( "[data-role='collapsible']" ).first().attr( "data-collapsed", "false" );
 		button.appendTo( this );
 		popup.appendTo( page );
 		
