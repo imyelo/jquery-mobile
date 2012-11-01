@@ -9,7 +9,6 @@
 	<script src="../../../js/jquery.js"></script>
 	<script src="../../_assets/js/jqm-docs.js"></script>
 	<script src="../../../js/"></script>
-
     <script>
 $( document ).on( "pageinit", function() {
 
@@ -61,11 +60,6 @@ $( document ).on( "pageinit", function() {
 
 });	
 	</script>
-    
-    <style>
-
-	</style>
-
 </head>
 <body>
 
@@ -74,7 +68,7 @@ $( document ).on( "pageinit", function() {
 		<div data-role="header">
 		<h1>Popup images</h1>
 		<a href="../../../" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
-		<a href="../../nav.html" data-icon="search" data-iconpos="notext" data-rel="dialog" data-transition="fade">Search</a>
+        <a href="../../demos/" data-icon="back" data-iconpos="right" data-direction="reverse">Demos</a>
 	</div><!-- /header -->
 
 	<div data-role="content" class="ui-body">
@@ -85,7 +79,9 @@ $( document ).on( "pageinit", function() {
 			<p>The framework CSS contains rules that make images that are immediate children of the popup scale to fit the screen. Because of the absolute positioning of the popup container and screen, the height is not adjusted to screen height on all browsers. You can prevent vertical scrolling with a simple script that sets the <code>max-height</code> of the image.</p>
 			
 			<p>In the two examples below the divs with <code>data-role="popup"</code> have a class of <code>photopopup</code>.</p>
-            
+ 
+ 			<p>The handler is bound to the <code>popupbeforeposition</code> event, which ensures the image is not only scaled before it is shown but also when the window is resized (e.g. orientation change). In this code example the height is reduced by 60 to take a top and bottom tolerance of 30 pixels into account.</p> 
+           
 			<div data-demo-html="true" data-demo-js="true">
 <a href="#popupPhotoLandscape" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Photo landscape</a>
             
@@ -100,26 +96,10 @@ $( document ).on( "pageinit", function() {
     <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img src="../../_assets/images/photo-portrait.jpg" alt="Photo portrait">
 </div>
 			</div><!-- /demo -->
-            			
-			<p>The handler is bound to the <code>popupbeforeposition</code> event, which ensures the image is not only scaled before it is shown but also when the window is resized (e.g. orientation change). In this code example the height is reduced by 60 to take a top and bottom tolerance of 30 pixels into account.</p> 
-
-<pre><code>
-$( document ).on( "pageinit", function() {
-    $( ".photopopup" ).on({
-        popupbeforeposition: function() {
-            var maxHeight = $( window ).height() - 60 + "px";
-            $( ".photopopup img" ).css( "max-height", maxHeight );
-        }
-    });
-});
-			
-</code></pre>
-
-			
-			
+	
 		</div><!--/content-primary -->
 
-</div><!-- /content -->
+	</div><!-- /content -->
 
 </div><!-- /page -->
 </body>
