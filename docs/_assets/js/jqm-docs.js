@@ -72,8 +72,8 @@ $.fn.viewSourceCode = function(){
 	return $( this ).each( function(){
 		demoId++
 		var button = $( "<a href='#jqm-demo-" + demoId + "' data-rel='popup' data-role='button' data-icon='gear' data-mini='true' data-inline='true' data-shadow='false' data-theme='f'>View Source</a>" ),
-			popup = $( "<div id='jqm-demo-" + demoId + "' class='jqm-demo' data-role='popup' data-theme='none' data-corners='false' data-position-to='window'>" +
-					"<div data-role='collapsible-set' data-inset='false'></div>" +
+			popup = $( "<div id='jqm-demo-" + demoId + "' class='jqm-demo' data-role='popup' data-theme='none' data-position-to='window'>" +
+					"<div data-role='collapsible-set' data-inset='true'></div>" +
 				"</div>" ),
 			collapsibleSet = popup.find( "[data-role='collapsible-set']" ),
 			page = $( this ).closest( "[data-role='page']" ),
@@ -86,7 +86,7 @@ $.fn.viewSourceCode = function(){
 				.replace( /"/gmi, '&quot;' )
 				.replace( />/gmi, '&gt;' )
 				.replace( /</gmi, '&lt;' );
-			collapsibleHTML = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='b' data-iconpos='right' data-content-theme='a'>" +
+			collapsibleHTML = $( "<div data-role='collapsible' data-collapsed='true' data-theme='b' data-iconpos='right' data-content-theme='a'>" +
 					"<h1>HTML</h1>" +
 					"<pre class='brush: xml'></pre>" +
 				"</div>" );
@@ -100,7 +100,7 @@ $.fn.viewSourceCode = function(){
 				.replace( /"/gmi, '&quot;' )
 				.replace( />/gmi, '&gt;' )
 				.replace( /</gmi, '&lt;' );
-			collapsibleJS = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='f' data-iconpos='right' data-content-theme='a'>" +
+			collapsibleJS = $( "<div data-role='collapsible' data-collapsed='true' data-theme='f' data-iconpos='right' data-content-theme='a'>" +
 					"<h1>JS</h1>" +
 					"<pre class='brush: js'></pre>" +
 				"</div>" );
@@ -112,7 +112,7 @@ $.fn.viewSourceCode = function(){
 			css = css
 				.replace( /&/gmi, '&amp;' )
 				.replace( /"/gmi, '&quot;' );
-			collapsibleCSS = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='e' data-iconpos='right' data-content-theme='a'>" +
+			collapsibleCSS = $( "<div data-role='collapsible' data-collapsed='true' data-theme='e' data-iconpos='right' data-content-theme='a'>" +
 					"<h1>CSS</h1>" +
 					"<pre class='brush: css'></pre>" +
 				"</div>" );
