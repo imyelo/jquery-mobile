@@ -1,7 +1,6 @@
 /* JQM Docs CSS */
 
 strong { font-weight: bold; }
-pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
 img { max-width: 100%; }
 
 /* Header */
@@ -146,6 +145,34 @@ h1#jqm-logo {
 	width: 90%;
 	max-width: 1400px;
 }
-.jqm-demo pre {
-	margin: 0;
+.jqm-demo .ui-collapsible-content {
+	padding: 0;
+}
+.syntaxhighlighter {
+	width: auto !important;
+	background-color: #222 !important;
+}
+.syntaxhighlighter .line.alt1 {
+	background-color: transparent !important;
+}
+.syntaxhighlighter .line.alt2 {
+	background-color: transparent !important;
+}
+.syntaxhighlighter.nogutter td.code .container textarea, .syntaxhighlighter.nogutter td.code .line {
+	padding-left: 1em !important;
+}
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+	color: #eee !important;
+}
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+	color: #5ba1cf !important;
+}
+.syntaxhighlighter .keyword {
+	color: #c84 !important;
+}
+.syntaxhighlighter .color1 {
+	color: #8df !important;
+}
+.syntaxhighlighter .string {
+	color: #9a6 !important;
 }

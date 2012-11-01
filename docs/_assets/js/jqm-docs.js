@@ -88,9 +88,9 @@ $.fn.viewSourceCode = function(){
 				.replace( /</gmi, '&lt;' );
 			collapsibleHTML = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='b' data-iconpos='right' data-content-theme='a'>" +
 					"<h1>HTML</h1>" +
-					"<pre><code class='language-html'></code></pre>" +
+					"<pre class='brush: xml'></pre>" +
 				"</div>" );
-			collapsibleHTML.find( "code" ).append( html );
+			collapsibleHTML.find( "pre" ).append( html );
 			collapsibleHTML.appendTo( collapsibleSet );
 		}
 		if ( $( this ).is( "[data-demo-js='true']" ) ) {
@@ -102,9 +102,9 @@ $.fn.viewSourceCode = function(){
 				.replace( /</gmi, '&lt;' );
 			collapsibleJS = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='f' data-iconpos='right' data-content-theme='a'>" +
 					"<h1>JS</h1>" +
-					"<pre><code class='language-js'></code></pre>" +
+					"<pre class='brush: js'></pre>" +
 				"</div>" );
-			collapsibleJS.find( "code" ).append( js );
+			collapsibleJS.find( "pre" ).append( js );
 			collapsibleJS.appendTo( collapsibleSet );
 		}
 		if ( $( this ).is( "[data-demo-css='true']" ) ) {
@@ -114,9 +114,9 @@ $.fn.viewSourceCode = function(){
 				.replace( /"/gmi, '&quot;' );
 			collapsibleCSS = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='e' data-iconpos='right' data-content-theme='a'>" +
 					"<h1>CSS</h1>" +
-					"<pre><code class='language-css'></code></pre>" +
+					"<pre class='brush: css'></pre>" +
 				"</div>" );
-			collapsibleCSS.find( "code" ).append( css );
+			collapsibleCSS.find( "pre" ).append( css );
 			collapsibleCSS.appendTo( collapsibleSet );
 		}
 
@@ -135,4 +135,5 @@ $( document ).on( "pageinit", function(){
 	$( ".jqm-demo .ui-collapsible-heading" ).click( function(){
 		$( ".jqm-demo" ).trigger( "resize" );
 	});
+	SyntaxHighlighter.all()
 });
