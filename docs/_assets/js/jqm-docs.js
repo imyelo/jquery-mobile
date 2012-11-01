@@ -1,18 +1,10 @@
-//collapse page navs after use
-$(function(){
-	$('body').delegate('.content-secondary .ui-collapsible-content', 'click',  function(){
-		$(this).trigger("collapse");
-	});
-});
-
 // display the version of jQM
-$(document).bind( 'pageinit', function() {
+$(document).bind( "pageinit", function() {
 	var version = $.mobile.version || "dev",
 		words = version.split( "-" ),
 		ver = words[0],
 		str = (words[1] || "Final"),
-		html = ver,
-		foothtml = "Version " + ver;
+		html = "Version " + ver;
 
 	if( str.indexOf( "rc" ) == -1 ){
 		str = str.charAt( 0 ).toUpperCase() + str.slice( 1 );
@@ -21,12 +13,10 @@ $(document).bind( 'pageinit', function() {
 	}
 
 	if ( $.mobile.version && str ) {
-		html += " <b>" + str + "</b>";
-		foothtml += " " + str;
+		html += " " + str;
 	}
 
-	$( ".type-home .ui-content p.jqm-version" ).html( html );
-	$( ".footer-docs p.jqm-version" ).html( foothtml );
+	$( "p.jqm-version" ).html( html );
 });
 
 // Turn off AJAX for local file browsing
@@ -41,10 +31,10 @@ if ( location.protocol.substr(0,4)  === 'file' ||
     });
   };
 
-  // fix the links for the initial page
+  // Fix the links for the initial page
   $(fixLinks);
 
-  // fix the links for subsequent ajax page loads
+  // Fix the links for subsequent ajax page loads
   $(document).bind( 'pagecreate', fixLinks );
 
   // Check to see if ajax can be used. This does a quick ajax request and blocks the page until its done
@@ -73,3 +63,69 @@ if ( location.protocol.substr(0,4)  === 'file' ||
     });
   });
 }
+
+// View demo source code
+$.fn.viewSourceCode = function(){
+	
+	var demoId = 0;
+	
+	return $( this ).each( function(){
+		demoId++
+		var button = $( "<a href='#jqm-demo-" + demoId + "' data-rel='popup' data-role='button' data-icon='gear' data-mini='true' data-inline='true' data-shadow='false' data-theme='f'>View Source</a>" ),
+			popup = $( "<div id='jqm-demo-" + demoId + "' class='jqm-demo' data-role='popup' data-theme='none' data-corners='false' data-position-to='window'>" +
+					"<div data-role='collapsible-set' data-inset='false'></div>" +
+				"</div>" ),
+			collapsibleSet = popup.find( "[data-role='collapsible-set']" ),
+			page = $( this ).closest( "[data-role='page']" ),
+			html, js, css, collapsibleHTML, collapsibleJS, collapsibleCSS;
+		
+		if ( $( this ).is( "[data-demo-html='true']" ) ) {
+			html = $( "<div></div>" ).append( $( this ).contents().clone() ).html();
+			html = html
+				.replace( /&/gmi, '&amp;' )
+				.replace( /"/gmi, '&quot;' )
+				.replace( />/gmi, '&gt;' )
+				.replace( /</gmi, '&lt;' );
+			collapsibleHTML = $( "<div data-role='collapsible' data-inset='false' data-collapsed='false' data-theme='b' data-iconpos='right' data-content-theme='a'>" +
+					"<h1>HTML</h1>" +
+					"<pre><code class='language-html'></code></pre>" +
+				"</div>" );
+			collapsibleHTML.find( "code" ).append( html );
+			collapsibleHTML.appendTo( collapsibleSet );
+		}
+		if ( $( this ).is( "[data-demo-js='true']" ) ) {
+			js = $( "<div></div>" ).append( $( "head" ).find( "script" ).contents().clone() ).html();
+			js = js
+				.replace( /&/gmi, '&amp;' )
+				.replace( /"/gmi, '&quot;' )
+				.replace( />/gmi, '&gt;' )
+				.replace( /</gmi, '&lt;' );
+			collapsibleJS = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='f' data-iconpos='right' data-content-theme='a'>" +
+					"<h1>JS</h1>" +
+					"<pre><code class='language-js'></code></pre>" +
+				"</div>" );
+			collapsibleJS.find( "code" ).append( js );
+			collapsibleJS.appendTo( collapsibleSet );
+		}
+		if ( $( this ).is( "[data-demo-css='true']" ) ) {
+			css = $( "<div></div>" ).append( $( "head" ).find( "style" ).contents().clone() ).html();
+			css = css
+				.replace( /&/gmi, '&amp;' )
+				.replace( /"/gmi, '&quot;' );
+			collapsibleCSS = $( "<div data-role='collapsible' data-inset='false' data-collapsed='true' data-theme='e' data-iconpos='right' data-content-theme='a'>" +
+					"<h1>CSS</h1>" +
+					"<pre><code class='language-css'></code></pre>" +
+				"</div>" );
+			collapsibleCSS.find( "code" ).append( css );
+			collapsibleCSS.appendTo( collapsibleSet );
+		}
+
+		button.appendTo( this );
+		popup.appendTo( page );
+		
+	});
+};
+
+$( document ).on( "pagebeforecreate", "[data-role='page']", function(){
+	$( this ).find( "[data-demo-html='true'], [data-demo-js='true'], [data-demo-css='true']" ).viewSourceCode();
+});
