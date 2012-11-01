@@ -10,42 +10,41 @@
 	<script src="../../_assets/js/jqm-docs.js"></script>
 	<script src="../../../js/"></script>	
     <script>
-// Bind to "pageinit" after you load jquery.mobile.js
-$( document ).on( "pageinit", function() {
-      
-	$( "#popupPanel" ).on({
-		popupbeforeposition: function() {
-			var h = $( window ).height();
-			
-			$( "#popupPanel" )
-				.css( "height", h );
-		}
-	});
-		 
-	$( "#popupPanel button" ).on( "click", function() {	
-		$( "#popupPanel" ).popup('close');
-	});
-
-});	
+		$( document ).on( "pageinit", function() {
+			  
+			$( "#popupPanel" ).on({
+				popupbeforeposition: function() {
+					var h = $( window ).height();
+					
+					$( "#popupPanel" )
+						.css( "height", h );
+				}
+			});
+				 
+			$( "#popupPanel button" ).on( "click", function() {	
+				$( "#popupPanel" ).popup('close');
+			});
+		
+		});	
 	</script>
     
     <style>
-iframe { border: none; }
-
-#popupPanel-popup {
-	right: 0 !important;
-	left: auto !important;
-}
-#popupPanel {
-	width: 200px;
-	border: 1px solid #000;
-	border-right: none;
-	background: rgba(0,0,0,.5);
-	margin: -1px 0;
-}
-#popupPanel .ui-btn {
-	margin: 2em 15px;
-}	
+		iframe { border: none; }
+		
+		#popupPanel-popup {
+			right: 0 !important;
+			left: auto !important;
+		}
+		#popupPanel {
+			width: 200px;
+			border: 1px solid #000;
+			border-right: none;
+			background: rgba(0,0,0,.5);
+			margin: -1px 0;
+		}
+		#popupPanel .ui-btn {
+			margin: 2em 15px;
+		}	
 	</style>
 </head>
 <body>
@@ -70,13 +69,13 @@ iframe { border: none; }
 			<p>Because the popup container is positioned absolute, you can't make the panel full height with <code>height:100%;</code>. This small script sets the height of the popup to the actual screen height.</p>
 			
             <div data-demo-html="true" data-demo-js="true" data-demo-css="true">
-<a href="#popupPanel" data-rel="popup" data-transition="slide" data-position-to="window" data-role="button" data-inline="true">Open panel</a>
-
-<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
-    <button data-theme="a" data-icon="back" data-mini="true">Back</button>
-    <button data-theme="a" data-icon="grid" data-mini="true">Menu</button>
-    <button data-theme="a" data-icon="search" data-mini="true">Search</button>
-</div>
+                <a href="#popupPanel" data-rel="popup" data-transition="slide" data-position-to="window" data-role="button" data-inline="true">Open panel</a>
+                
+                <div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
+                    <button data-theme="a" data-icon="back" data-mini="true">Back</button>
+                    <button data-theme="a" data-icon="grid" data-mini="true">Menu</button>
+                    <button data-theme="a" data-icon="search" data-mini="true">Search</button>
+                </div>
             </div><!-- /demo -->
 		
 		</div><!--/content-primary -->

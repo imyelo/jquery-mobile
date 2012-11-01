@@ -12,86 +12,86 @@
 	<script src="../../_assets/js/jqm-docs.js"></script>
     <script src="../../../js/"></script>
     <script>
-$( document ).on( "pageinit", function() {
-
-	function scale( width, height, padding, border ) {
-		var scrWidth = $( window ).width() - 30,
-			scrHeight = $( window ).height() - 30,
-			ifrPadding = 2 * padding,
-			ifrBorder = 2 * border,
-			ifrWidth = width + ifrPadding + ifrBorder,
-			ifrHeight = height + ifrPadding + ifrBorder,
-			h, w;
-
-		if ( ifrWidth < scrWidth && ifrHeight < scrHeight ) {
-			w = ifrWidth;
-			h = ifrHeight;
-		} else if ( ( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight ) ) {
-			w = scrWidth;
-			h = ( scrWidth / ifrWidth ) * ifrHeight;
-		} else {
-			h = scrHeight;
-			w = ( scrHeight / ifrHeight ) * ifrWidth;
-		}
+		$( document ).on( "pageinit", function() {
 		
-		return {
-			'width': w - ( ifrPadding + ifrBorder ),
-			'height': h - ( ifrPadding + ifrBorder )
-		};
-	};
-
-	$( ".ui-popup iframe" )
-		.attr( "width", 0 )
-		.attr( "height", "auto" );
-	 
-	$( "#popupVideo" ).on({
-		popupbeforeposition: function() {
-			// call our custom function scale() to get the width and height 
-			var size = scale( 497, 298, 15, 1 ),
-				w = size.width,
-				h = size.height;
-
-			$( "#popupVideo iframe" )
-				.attr( "width", w )
-				.attr( "height", h );
-		},
-		popupafterclose: function() {
-			$( "#popupVideo iframe" )
+			function scale( width, height, padding, border ) {
+				var scrWidth = $( window ).width() - 30,
+					scrHeight = $( window ).height() - 30,
+					ifrPadding = 2 * padding,
+					ifrBorder = 2 * border,
+					ifrWidth = width + ifrPadding + ifrBorder,
+					ifrHeight = height + ifrPadding + ifrBorder,
+					h, w;
+		
+				if ( ifrWidth < scrWidth && ifrHeight < scrHeight ) {
+					w = ifrWidth;
+					h = ifrHeight;
+				} else if ( ( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight ) ) {
+					w = scrWidth;
+					h = ( scrWidth / ifrWidth ) * ifrHeight;
+				} else {
+					h = scrHeight;
+					w = ( scrHeight / ifrHeight ) * ifrWidth;
+				}
+				
+				return {
+					'width': w - ( ifrPadding + ifrBorder ),
+					'height': h - ( ifrPadding + ifrBorder )
+				};
+			};
+		
+			$( ".ui-popup iframe" )
 				.attr( "width", 0 )
-				.attr( "height", 0 );	
-		}
-	});
-
-	$( "#popupMap iframe" ).contents().find( "#map_canvas" )
-		.css( { "width" : 0, "height" : 0 } );
-	 		 
-	$( "#popupMap" ).on({
-		popupbeforeposition: function() {
-			var size = scale( 480, 320, 0, 1 ),
-				w = size.width,
-				h = size.height;
-
-			$( "#popupMap iframe" )
-				.attr( "width", w )
-				.attr( "height", h );
-					 
+				.attr( "height", "auto" );
+			 
+			$( "#popupVideo" ).on({
+				popupbeforeposition: function() {
+					// call our custom function scale() to get the width and height 
+					var size = scale( 497, 298, 15, 1 ),
+						w = size.width,
+						h = size.height;
+		
+					$( "#popupVideo iframe" )
+						.attr( "width", w )
+						.attr( "height", h );
+				},
+				popupafterclose: function() {
+					$( "#popupVideo iframe" )
+						.attr( "width", 0 )
+						.attr( "height", 0 );	
+				}
+			});
+		
 			$( "#popupMap iframe" ).contents().find( "#map_canvas" )
-				.css( { "width": w, "height" : h } );
-		},
-		popupafterclose: function() {
-			$( "#popupMap iframe" )
-				.attr( "width", 0 )
-				.attr( "height", 0 );
+				.css( { "width" : 0, "height" : 0 } );
 					 
-			$( "#popupMap iframe" ).contents().find( "#map_canvas" )
-				.css( { "width": 0, "height" : 0 } );
-		}
-	});
-
-});	
+			$( "#popupMap" ).on({
+				popupbeforeposition: function() {
+					var size = scale( 480, 320, 0, 1 ),
+						w = size.width,
+						h = size.height;
+		
+					$( "#popupMap iframe" )
+						.attr( "width", w )
+						.attr( "height", h );
+							 
+					$( "#popupMap iframe" ).contents().find( "#map_canvas" )
+						.css( { "width": w, "height" : h } );
+				},
+				popupafterclose: function() {
+					$( "#popupMap iframe" )
+						.attr( "width", 0 )
+						.attr( "height", 0 );
+							 
+					$( "#popupMap iframe" ).contents().find( "#map_canvas" )
+						.css( { "width": 0, "height" : 0 } );
+				}
+			});
+		
+		});	
 	</script>
     <style>
-iframe { border: none; }
+		iframe { border: none; }
 	</style>
 </head>
 <body>
@@ -116,11 +116,11 @@ iframe { border: none; }
 			<p>Here is an example of a 3rd party video player embedded in a popup:</p>
             
             <div data-demo-html="true" data-demo-js="true" data-demo-css="true">
-<a href="#popupVideo" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Launch video player</a>			
-
-<div data-role="popup" id="popupVideo" data-overlay-theme="a" data-theme="d" data-tolerance="15,15" class="ui-content">
-    <iframe src="http://player.vimeo.com/video/41135183?portrait=0" width="497" height="298" seamless></iframe>
-</div>
+                <a href="#popupVideo" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Launch video player</a>			
+                
+                <div data-role="popup" id="popupVideo" data-overlay-theme="a" data-theme="d" data-tolerance="15,15" class="ui-content">
+                    <iframe src="http://player.vimeo.com/video/41135183?portrait=0" width="497" height="298" seamless></iframe>
+                </div>
             </div><!-- /demo -->
 				
 			<p>The markup is an iframe inside a popup container. The popup will have a 15 pixels padding because of class <code>ui-content</code> and a one pixel border because the framework will add class <code>ui-body-d</code> to the popup.</p>
@@ -140,12 +140,12 @@ iframe { border: none; }
 			<p>In the second example, an iframe is used to display <strong>Google Maps API</strong>. Using an iframe prevents issues with the controls of the map.</p>
 			
             <div data-demo-html="true" data-demo-js="true" data-demo-css="true">
-<a href="#popupMap" data-rel="popup" data-position-to="window" data-role="button" data-theme="b" data-inline="true">Open Map</a>
-
-<div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
-    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-    <iframe src="map.html" width="480" height="320" seamless></iframe>
-</div>
+                <a href="#popupMap" data-rel="popup" data-position-to="window" data-role="button" data-theme="b" data-inline="true">Open Map</a>
+                
+                <div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <iframe src="map.html" width="480" height="320" seamless></iframe>
+                </div>
 			</div><!-- /demo -->
 
 			<p>View the source of the iframe:</p>

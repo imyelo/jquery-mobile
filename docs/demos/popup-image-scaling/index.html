@@ -10,55 +10,55 @@
 	<script src="../../_assets/js/jqm-docs.js"></script>
 	<script src="../../../js/"></script>
     <script>
-$( document ).on( "pageinit", function() {
-
-	$( ".photopopup" ).on({
-		popupbeforeposition: function() {
-			var maxHeight = $( window ).height() - 60 + "px";
-			$( ".photopopup img" ).css( "max-height", maxHeight );
-		}
-	});
-
-	function scale( width, height, padding, border ) {
-		var scrWidth = $( window ).width() - 30,
-			scrHeight = $( window ).height() - 30,
-			ifrPadding = 2 * padding,
-			ifrBorder = 2 * border,
-			ifrWidth = width + ifrPadding + ifrBorder,
-			ifrHeight = height + ifrPadding + ifrBorder,
-			h, w;
-
-		if ( ifrWidth < scrWidth && ifrHeight < scrHeight ) {
-			w = ifrWidth;
-			h = ifrHeight;
-		} else if ( ( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight ) ) {
-			w = scrWidth;
-			h = ( scrWidth / ifrWidth ) * ifrHeight;
-		} else {
-			h = scrHeight;
-			w = ( scrHeight / ifrHeight ) * ifrWidth;
-		}
+		$( document ).on( "pageinit", function() {
 		
-		return {
-			'width': w - ( ifrPadding + ifrBorder ),
-			'height': h - ( ifrPadding + ifrBorder )
-		};
-	};
-
-	$( "#popupPanel" ).on({
-		popupbeforeposition: function() {
-			var h = $( window ).height();
-			
-			$( "#popupPanel" )
-				.css( "height", h );
-		}
-	});
-		 
-	$( "#popupPanel button" ).on( "click", function() {	
-		$( "#popupPanel" ).popup('close');
-	});
-
-});	
+			$( ".photopopup" ).on({
+				popupbeforeposition: function() {
+					var maxHeight = $( window ).height() - 60 + "px";
+					$( ".photopopup img" ).css( "max-height", maxHeight );
+				}
+			});
+		
+			function scale( width, height, padding, border ) {
+				var scrWidth = $( window ).width() - 30,
+					scrHeight = $( window ).height() - 30,
+					ifrPadding = 2 * padding,
+					ifrBorder = 2 * border,
+					ifrWidth = width + ifrPadding + ifrBorder,
+					ifrHeight = height + ifrPadding + ifrBorder,
+					h, w;
+		
+				if ( ifrWidth < scrWidth && ifrHeight < scrHeight ) {
+					w = ifrWidth;
+					h = ifrHeight;
+				} else if ( ( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight ) ) {
+					w = scrWidth;
+					h = ( scrWidth / ifrWidth ) * ifrHeight;
+				} else {
+					h = scrHeight;
+					w = ( scrHeight / ifrHeight ) * ifrWidth;
+				}
+				
+				return {
+					'width': w - ( ifrPadding + ifrBorder ),
+					'height': h - ( ifrPadding + ifrBorder )
+				};
+			};
+		
+			$( "#popupPanel" ).on({
+				popupbeforeposition: function() {
+					var h = $( window ).height();
+					
+					$( "#popupPanel" )
+						.css( "height", h );
+				}
+			});
+				 
+			$( "#popupPanel button" ).on( "click", function() {	
+				$( "#popupPanel" ).popup('close');
+			});
+		
+		});	
 	</script>
 </head>
 <body>
@@ -83,18 +83,18 @@ $( document ).on( "pageinit", function() {
  			<p>The handler is bound to the <code>popupbeforeposition</code> event, which ensures the image is not only scaled before it is shown but also when the window is resized (e.g. orientation change). In this code example the height is reduced by 60 to take a top and bottom tolerance of 30 pixels into account.</p> 
            
 			<div data-demo-html="true" data-demo-js="true">
-<a href="#popupPhotoLandscape" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Photo landscape</a>
-            
-<div data-role="popup" id="popupPhotoLandscape" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15" >
-    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img src="../../_assets/images/photo-landscape.jpg" alt="Photo landscape">
-</div>
+                <a href="#popupPhotoLandscape" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Photo landscape</a>
+                            
+                <div data-role="popup" id="popupPhotoLandscape" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15" >
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img src="../../_assets/images/photo-landscape.jpg" alt="Photo landscape">
+                </div>
 			</div><!-- /demo -->
             
 			<div data-demo-html="true" data-demo-js="true">
-<a href="#popupPhotoPortrait" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="fade">Photo portrait</a>
-<div data-role="popup" id="popupPhotoPortrait" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15" >
-    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img src="../../_assets/images/photo-portrait.jpg" alt="Photo portrait">
-</div>
+                <a href="#popupPhotoPortrait" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="fade">Photo portrait</a>
+                <div data-role="popup" id="popupPhotoPortrait" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15" >
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img src="../../_assets/images/photo-portrait.jpg" alt="Photo portrait">
+                </div>
 			</div><!-- /demo -->
 	
 		</div><!--/content-primary -->
