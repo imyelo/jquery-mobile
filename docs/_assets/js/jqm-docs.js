@@ -130,3 +130,9 @@ $.fn.viewSourceCode = function(){
 $( document ).on( "pagebeforecreate", "[data-role='page']", function(){
 	$( this ).find( "[data-demo-html='true'], [data-demo-js='true'], [data-demo-css='true']" ).viewSourceCode();
 });
+
+$( document ).on( "pageinit", function(){
+	$( ".jqm-demo .ui-collapsible-heading" ).click( function(){
+		$( ".jqm-demo" ).trigger( "resize" );
+	});
+});
