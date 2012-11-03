@@ -272,6 +272,7 @@ $.widget( "mobile.selectmenu", $.mobile.selectmenu, $.mobile.behaviors.formReset
 //auto self-init widgets
 $( document ).bind( "pagecreate create", function( e ) {
 	$.mobile.selectmenu.prototype.enhanceWithin( e.target, true );
+	$( e.target ).trigger( "enhancecomplete", "select" );
 });
 })( jQuery );
 //>>excludeStart("jqmBuildExclude", pragmas.jqmBuildExclude);

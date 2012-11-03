@@ -304,6 +304,8 @@ $( document ).bind( "pagecreate create", function( e ) {
 		.jqmEnhanceable()
 		.not( "button, input, .ui-btn, :jqmData(role='none'), :jqmData(role='nojs')" )
 		.buttonMarkup();
+
+	$( e.target ).trigger( "enhancecomplete", "buttonMarkup" );
 });
 
 })( jQuery );

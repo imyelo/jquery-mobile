@@ -211,6 +211,7 @@ $.widget( "mobile.checkboxradio", $.mobile.checkboxradio, $.mobile.behaviors.for
 //auto self-init widgets
 $( document ).bind( "pagecreate create", function( e ) {
 	$.mobile.checkboxradio.prototype.enhanceWithin( e.target, true );
+	$( e.target ).trigger( "enhancecomplete", "checkboxradio" );
 });
 
 })( jQuery );
