@@ -160,7 +160,6 @@ $.widget( "mobile.button", $.mobile.widget, {
 //auto self-init widgets
 $( document ).bind( "pagecreate create", function( e ) {
 	$.mobile.button.prototype.enhanceWithin( e.target, true );
-	$( e.target ).trigger( "enhancecomplete", "button" );
 });
 
 })( jQuery );

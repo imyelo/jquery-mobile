@@ -7,6 +7,7 @@
 
 define( [ "jquery",
 	"../jquery.mobile.buttonMarkup",
+	"./forms/button",
 	"../jquery.mobile.widget" ], function( $ ) {
 //>>excludeEnd("jqmBuildExclude");
 (function( $, undefined ) {
@@ -100,52 +101,8 @@ define( [ "jquery",
 		}
 	});
 
-	// Defer enhancement of controlgroups until all dependent widgets have completed their enhancement
-	var enhKey = "controlgroup_enhancementDeps";
-
-	// Retrieve (and initialize if not present) information about completed depdencies for a given target
-	function getEnhancementDeps( $target ) {
-		var deps = $target.jqmData( enhKey );
-
-		if ( !deps ) {
-			deps = {
-				deferred: $.Deferred(),
-				deps: {}
-			};
-			$target.jqmData( enhKey, deps );
-		}
-
-		return deps;
-	}
-
-	// Record that a dependency has completed and resolve the deferred when all listed dependencies are complete
-	$( document ).bind( "enhancecomplete", function( e, data ) {
-		var deps = [ "button", "checkboxradio", "buttonMarkup", "select" ], idx,
-			$target = $( e.target ),
-			enhancementDeps = getEnhancementDeps( $target );
-
-		enhancementDeps.deps[ data ] = true;
-
-		for ( idx = deps.length - 1 ; idx > -1 ; idx-- ) {
-			if ( !enhancementDeps.deps[ deps[ idx ] ] ) {
-				break;
-			}
-		}
-
-		if ( -1 === idx ) {
-			enhancementDeps.deferred.resolve();
-		}
-	});
-
-	// Wait for dependent widgets inside e.target to become enhanced before enhancing controlgroups
 	$( document ).bind( "pagecreate create", function( e )  {
-		var $target = $( e.target ),
-			enhancementDeps = getEnhancementDeps( $target );
-
-		enhancementDeps.deferred.done( function() {
-			$.mobile.controlgroup.prototype.enhanceWithin( e.target, true );
-			$target.jqmRemoveData( enhKey );
-		});
+		$.mobile.controlgroup.prototype.enhanceWithin( e.target, true );
 	});
 })(jQuery);
 //>>excludeStart("jqmBuildExclude", pragmas.jqmBuildExclude);
